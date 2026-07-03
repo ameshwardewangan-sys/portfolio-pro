@@ -96,3 +96,263 @@ nav ul li a:hover{
     0%{background-position:0% 50%;}
     100%{background-position:100% 50%;}
 }
+.about{
+    padding:100px 10%;
+    text-align:center;
+}
+
+.about h2{
+    font-size:42px;
+    margin-bottom:20px;
+    color:#38bdf8;
+}
+
+.about p{
+    max-width:800px;
+    margin:auto;
+    font-size:20px;
+    line-height:1.8;
+    color:#d1d5db;
+}
+.skills{
+    padding:100px 10%;
+    text-align:center;
+}
+
+.skills h2{
+    font-size:42px;
+    color:#38bdf8;
+    margin-bottom:40px;
+}
+
+.skill-box{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:rgba(255,255,255,.08);
+    padding:30px;
+    border-radius:20px;
+    backdrop-filter:blur(10px);
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card h3{
+    color:#38bdf8;
+    margin-bottom:15px;
+}
+
+.card p{
+    color:#d1d5db;
+}
+.projects{
+    padding:100px 10%;
+    text-align:center;
+}
+
+.projects h2{
+    font-size:42px;
+    color:#38bdf8;
+    margin-bottom:40px;
+}
+
+.project-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.project-card{
+    background:rgba(255,255,255,.08);
+    border-radius:20px;
+    padding:30px;
+    backdrop-filter:blur(10px);
+    transition:.4s;
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.project-card:hover{
+    transform:translateY(-10px) scale(1.03);
+    border-color:#38bdf8;
+}
+
+.project-card h3{
+    margin-bottom:15px;
+    color:#38bdf8;
+}
+
+.project-card p{
+    color:#d1d5db;
+    line-height:1.6;
+}.contact{
+    padding:100px 10%;
+    text-align:center;
+}
+
+.contact h2{
+    font-size:42px;
+    color:#38bdf8;
+    margin-bottom:20px;
+}
+
+.contact p{
+    color:#d1d5db;
+    margin-bottom:30px;
+    font-size:18px;
+}
+
+.contact-btn{
+    display:inline-block;
+    padding:15px 35px;
+    background:#38bdf8;
+    color:#fff;
+    text-decoration:none;
+    border-radius:50px;
+    transition:.3s;
+}
+
+.contact-btn:hover{
+    transform:scale(1.08);
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    background:#0b1120;
+    color:#94a3b8;
+}
+#theme-toggle{
+    background:#38bdf8;
+    color:#fff;
+    border:none;
+    padding:10px 15px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.light-mode{
+    background:#f8fafc;
+    color:#111827;
+}
+
+.light-mode nav{
+    background:rgba(255,255,255,.8);
+}
+
+.light-mode .card,
+.light-mode .project-card{
+    background:#ffffff;
+    color:#111827;
+}
+/* Loading Screen */
+
+#loader{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#0f172a;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+}
+
+.spinner{
+    width:70px;
+    height:70px;
+    border:6px solid rgba(255,255,255,.2);
+    border-top:6px solid #38bdf8;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+}
+
+#loader h2{
+    margin-top:25px;
+    color:white;
+}
+
+@keyframes spin{
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform:rotate(360deg);
+    }
+}
+/* Scroll Progress Bar */
+
+#progress-bar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:0%;
+    height:5px;
+    background:#38bdf8;
+    z-index:999999;
+}
+/* Scroll To Top Button */
+
+#topBtn{
+    display:none;
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    width:55px;
+    height:55px;
+    border:none;
+    border-radius:50%;
+    background:#38bdf8;
+    color:#fff;
+    font-size:22px;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
+    transition:.3s;
+    z-index:9999;
+}
+
+#topBtn:hover{
+    transform:translateY(-5px);
+}
+.menu-toggle{
+    display:none;
+    font-size:30px;
+    cursor:pointer;
+    color:white;
+}
+
+@media(max-width:768px){
+
+    .menu-toggle{
+        display:block;
+    }
+
+    nav ul{
+        display:none;
+        position:absolute;
+        top:80px;
+        right:20px;
+        background:#1e293b;
+        width:220px;
+        padding:20px;
+        border-radius:12px;
+        flex-direction:column;
+    }
+
+    nav ul.active{
+        display:flex;
+    }
+
+    nav ul li{
+        margin:15px 0;
+    }
+}
