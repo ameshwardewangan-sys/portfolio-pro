@@ -1,86 +1,116 @@
-const text = "Hi, I'm Ameshwar Dewangan";
-const typing = document.getElementById("typing");
+// ===========================
+// script.js
+// ===========================
 
-let i = 0;
+// Mobile Menu
+const menuBtn = document.querySelector(".menu-btn");
+const navbar = document.querySelector(".navbar");
 
-function type() {
-    if (typing && i < text.length) {
-        typing.innerHTML += text.charAt(i);
-        i++;
-        setTimeout(type, 100);
-    }
-}
-
-type();
-
-// Dark / Light Mode
-
-const btn = document.getElementById("theme-toggle");
-
-if (btn) {
-    btn.onclick = function () {
-        document.body.classList.toggle("light-mode");
-
-        if (document.body.classList.contains("light-mode")) {
-            btn.innerHTML = "☀️";
-        } else {
-            btn.innerHTML = "🌙";
-        }
-    };
-}
-// Loading Screen
-
-window.addEventListener("load",function(){
-
-    setTimeout(function(){
-
-        document.getElementById("loader").style.display="none";
-
-    },1200);
-
+menuBtn.addEventListener("click", () => {
+    navbar.classList.toggle("active");
 });
-// Scroll Progress Bar
 
-window.onscroll = function(){
+// Close Menu After Click
+document.querySelectorAll(".navbar a").forEach(link => {
+    link.addEventListener("click", () => {
+        navbar.classList.remove("active");
+    });
+});
 
-let winScroll = document.documentElement.scrollTop;
-
-let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-
-let scrolled = (winScroll / height) * 100;
-
-document.getElementById("progress-bar").style.width = scrolled + "%";
-
-};
-// Scroll To Top Button
-
-const topBtn = document.getElementById("topBtn");
+// Active Navigation
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".navbar a");
 
 window.addEventListener("scroll", () => {
 
-    if(window.scrollY > 300){
-        topBtn.style.display = "block";
-    }else{
-        topBtn.style.display = "none";
+    let current = "";
+
+    sections.forEach(section => {
+
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.offsetHeight;
+
+        if (pageYOffset >= sectionTop) {
+            current = section.getAttribute("id");
+        }
+
+    });
+
+    navLinks.forEach(link => {
+
+        link.classList.remove("active");
+
+        if (link.getAttribute("href") === "#" + current) {
+            link.classList.add("active");
+        }
+
+    });
+
+});
+
+// Sticky Header
+const header = document.querySelector(".header");
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 50) {
+        header.classList.add("sticky");
+    } else {
+        header.classList.remove("sticky");
     }
 
 });
 
-topBtn.addEventListener("click", () => {
+// Scroll To Top Button
+const scrollBtn = document.getElementById("scrollTop");
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 400) {
+        scrollBtn.style.display = "flex";
+    } else {
+        scrollBtn.style.display = "none";
+    }
+
+});
+
+scrollBtn.addEventListener("click", () => {
 
     window.scrollTo({
-        top:0,
-        behavior:"smooth"
+        top: 0,
+        behavior: "smooth"
     });
 
 });
-// Mobile Menu
 
-const menu = document.getElementById("menu-toggle");
-const navLinks = document.getElementById("nav-links");
+// Contact Form
+const form = document.querySelector(".contact-form");
 
-if(menu && navLinks){
-    menu.onclick = function(){
-        navLinks.classList.toggle("active");
-    };
-}
+form.addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    alert("Thank you! Your message has been sent.");
+
+    form.reset();
+
+});
+
+// Fade Animation
+const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+
+    });
+
+},{
+    threshold:0.2
+});
+
+document.querySelectorAll("section").forEach(section => {
+    observer.observe(section);
+});
