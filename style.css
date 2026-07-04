@@ -408,3 +408,9 @@ footer {
     .home { flex-direction: column-reverse; }
     .contact form .input-box input { width: 100%; }
 }
+.logo-img {
+    width: 50px;   /* आप यहाँ से साइज छोटा या बड़ा कर सकते हैं */
+    height: 50px;
+    object-fit: contain; /* इससे इमेज फटेगी नहीं */
+    vertical-align: middle;
+}
